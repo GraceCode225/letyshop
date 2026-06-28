@@ -1,0 +1,16 @@
+name: Keep Supabase Alive
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase
+        run: |
+          curl -s "https://ftdpqtrxfxnevigigsiz.supabase.co/rest/v1/products?limit=1" \
+          -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHBxdHJ4ZnhuZXZpZ2lnc2l6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyMzI2OTUsImV4cCI6MjA5NzgwODY5NX0.9RCTJbsmqoCyynQA7YGI-BJc-dlj2NyhWOoSflfOHp4" \
+          -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ0ZHBxdHJ4ZnhuZXZpZ2lnc2l6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyMzI2OTUsImV4cCI6MjA5NzgwODY5NX0.9RCTJbsmqoCyynQA7YGI-BJc-dlj2NyhWOoSflfOHp4"
+          echo "✅ Supabase pinged!"
